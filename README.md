@@ -10,6 +10,7 @@ python setup.py install
 ```
 
 ## usage
+```
 >>> from pymem import get_size
 >>> x = '1234567'
 >>> deep_getsizeof(x, set())  # prints 44 bytes
