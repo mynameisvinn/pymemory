@@ -1,6 +1,8 @@
 # pymem
 
-inspect memory footprint of python objects.
+inspect memory footprint of python objects. 
+
+for example, how many bytes does the string 'abc' take up? each char is 1 byte and a string object requires 37 bytes of overhead. that means 'abc' takes up 40 bytes.
 
 ## install
 ``` 
