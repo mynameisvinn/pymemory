@@ -1,2 +1,3 @@
 vin_readme.txt
 *.pyc
+.DS_Store

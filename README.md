@@ -1,19 +1,21 @@
-# pymem
+# PyMemory
 
 inspect memory footprint of python objects. 
 
-for example, how many bytes does the string 'abc' take up? each char is 1 byte and a string object requires 37 bytes of overhead. that means 'abc' takes up 40 bytes.
+for example, we'd like to determine size of str `abc`? 
+
+in ascii, each char is 1 byte and a python str object has 37 bytes of overhead, so that means `abc` takes up 40 bytes.
 
 ## install
 ``` 
-git clone github.com/mynameisvinn/pymem
-cd pymem
+git clone github.com/mynameisvinn/pymemory
+cd pymemory
 python setup.py install
 ```
 
-## usage
+## example
 ```
->>> from pymem import deep_getsizeof
+>>> from pymemory import deep_getsizeof
 >>> x = '1234567'
 >>> deep_getsizeof(x, set())  # prints 44 bytes
 ```
