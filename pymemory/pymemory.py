@@ -1,35 +1,43 @@
+"""This module finds memory footprint of a python object."""
+
 from collections import Mapping, Container
 from sys import getsizeof
- 
-def deep_getsizeof(o, ids):
+
+def deep_getsizeof(obj, ids):
     """Find the memory footprint of a Python object
- 
+
     This is a recursive function that drills down a Python object graph
     like a dictionary holding nested dictionaries with lists of lists
     and tuples and sets.
- 
+
     The sys.getsizeof function does a shallow size of only. It counts each
     object inside a container as pointer only regardless of how big it
     really is.
- 
-    :param o: the object
-    :param ids:
-    :return:
+
+    Parameters
+    ----------
+    obj : object
+    ids: 
+
+    Return
+    ------
+    obj_size : int
+        return the size of an object in bytes.
     """
-    d = deep_getsizeof
-    if id(o) in ids:
+    if id(obj) in ids:
         return 0
- 
-    r = getsizeof(o)
-    ids.add(id(o))
- 
-    if isinstance(o, str) or isinstance(0, unicode):
-        return r
- 
-    if isinstance(o, Mapping):
-        return r + sum(d(k, ids) + d(v, ids) for k, v in o.iteritems())
- 
-    if isinstance(o, Container):
-        return r + sum(d(x, ids) for x in o)
- 
-    return r 
+
+    obj_size = getsizeof(obj)
+    ids.add(id(obj))
+
+    if isinstance(obj, str) or isinstance(0, unicode):
+        return obj_size
+
+    if isinstance(obj, Mapping):
+        return obj_size + sum(deep_getsizeof(k, ids) +
+                              deep_getsizeof(v, ids) for k, v in obj.iteritems())
+
+    if isinstance(obj, Container):
+        return obj_size + sum(deep_getsizeof(x, ids) for x in obj)
+
+    return obj_size
