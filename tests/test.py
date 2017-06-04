@@ -34,5 +34,8 @@ class InitializationTests(unittest.TestCase):
         x = []
         assert(deep_getsizeof(x, set()) == 72)
 
-if __name__ == "__main__":
+def main():
     unittest.main()
+
+if __name__ == '__main__':
+    main()
