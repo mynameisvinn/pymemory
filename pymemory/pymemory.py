@@ -1,9 +1,9 @@
 """This module finds memory footprint of a python object."""
 
-from collections import Mapping, Container
 from sys import getsizeof
+from collections import Mapping, Container
 
-def deep_getsizeof(obj, ids):
+def deep_getsizeof(obj):
     """Find the memory footprint of a Python object
 
     This is a recursive function that drills down a Python object graph
@@ -17,13 +17,14 @@ def deep_getsizeof(obj, ids):
     Parameters
     ----------
     obj : object
-    ids: 
+    ids:
 
     Return
     ------
     obj_size : int
         return the size of an object in bytes.
     """
+    ids = set()
     if id(obj) in ids:
         return 0
 
